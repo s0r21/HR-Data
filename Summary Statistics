@@ -43,7 +43,7 @@ for i in Sum_statistics:
     
 # Visually displaying the results
 
-# Creating a Histogram to visually see the spread of the data. Majority rates of pay are central around approximately $25.00. Data looks bimodal. Second peak at approximately $55.00. Data is infact skewed positively (to the right).
+# Creating a Histogram to visually see the spread of the data. Majority rates of pay are central around approximately $25.00. Data looks bimodal. Second peak at approximately $55.00. Data is skewed positively (to the right). This can also be seen by noting that the mean > median.
 plt.hist(Pay_Rate,
          color = 'green')
 plt.title('Pay Rate Histogram')
@@ -52,7 +52,7 @@ plt.ylabel('Number of people with this pay')
 plt.grid(True)
 plt.show()
 
-# Creating a boxplot to visually see the spread of the data. 
+# Creating a boxplot to visually see the spread of the data. Outlier at approximatley $80.00. Median looks like it is about $25.00. Upper wisker range (Q3 + 1.5*IQR) is a lot higher than the lower wisker range (Q1 - 1.5*IQR). 
 plt.boxplot(Pay_Rate)
 plt.xlabel('Pay Data')
 plt.ylabel('Rates of Pay')
