@@ -1,1 +1,42 @@
-# 
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# Importing the dataset
+df = pd.read_csv('core_dataset.csv')
+
+# Manipulating the dataset
+df_1 = pd.DataFrame(dataset1[['DOB',
+                                   'Position',
+                                   'Pay Rate',
+                                   'Manager Name',
+                                   'Zip]]).dropna()
+                                   
+# Creating the variables                                    
+Pay_Rate, Zip = df_1['Pay Rate'], \
+                df_1['Zip']
+
+# Computing Summary Statistics
+Average = np.mean(Pay_Rate)
+Median = np.median(Pay_Rate)
+Var = np.var(df_1['Pay Rate'])
+SD = np.std(Pay_Rate)
+Q1 = np.percentile(Pay_Rate, 25)
+Q3 = np.percentile(Pay_Rate, 75)
+IQR = Q3 - Q1
+Correl_Pay = np.corrcoef(Pay_Rate,
+                         df_1['Zip'])
+
+# Listing the variables so they print more appealing
+Sum_statistics = list(['Average: ' + str(Average_Pay),
+      'Median: ' + str(Median_Pay),
+      'Variance: ' + str(Var),
+      'Sdev: ' + str(Sd_Pay), # The standard deviation is 
+      'Q1: ' + str(Q1), # The first quantile is 20.00. Meaning that 75% of pay rates reside above this number. 
+      'Q3: ' + str(Q3), # The thrid quantile is 43.00. Meaning that 25% of pay rates resides below this number.
+      'IQR: ' + str(IQR), # IQR is 23.00. Meaning that the range between the 75th percentile and the 25th percentile is 23.00.
+      'Correlation (Pay_Rate & Zip): ' + str(Correl_Pay)]) # Computation of this shows that there is a 0.4 relationship between the pay rate of employees and their zip codes.
+
+# Printing the variables
+for i in Sum_statistics:
+    print(i)
