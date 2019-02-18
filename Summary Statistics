@@ -28,10 +28,10 @@ Correl_Pay = np.corrcoef(Pay_Rate,
                          df_1['Zip'])
 
 # Listing the variables so they print more appealing
-Sum_statistics = list(['Average: ' + str(Average_Pay),
-      'Median: ' + str(Median_Pay),
-      'Variance: ' + str(Var),
-      'Sdev: ' + str(Sd_Pay), # The standard deviation is 
+Sum_statistics = list(['Average: ' + str(Average_Pay), # The mean is 30.71. Meaning that the arithmetic mean is 30.71. 
+      'Median: ' + str(Median_Pay), # The median is 24.00. Meaning that 50% of the pay rates are above / below this number.
+      'Variance: ' + str(Var), # The variance is 230.76. Meaning that the spread of the data squared is approximately 230.76.
+      'Sdev: ' + str(Sd_Pay), # The standard deviation is 15.19. Meaning 95% of the pay rates are 2 * 15.19 is above and below the mean (average). This measures the spread of the data.
       'Q1: ' + str(Q1), # The first quantile is 20.00. Meaning that 75% of pay rates reside above this number. 
       'Q3: ' + str(Q3), # The thrid quantile is 43.00. Meaning that 25% of pay rates resides below this number.
       'IQR: ' + str(IQR), # IQR is 23.00. Meaning that the range between the 75th percentile and the 25th percentile is 23.00.
@@ -40,3 +40,21 @@ Sum_statistics = list(['Average: ' + str(Average_Pay),
 # Printing the variables
 for i in Sum_statistics:
     print(i)
+    
+# Visually displaying the results
+
+# Creating a Histogram to visually see the spread of the data. Majority rates of pay are central around approximately $25.00. Data looks bimodal. Second peak at approximately $55.00. Data is infact skewed positively (to the right).
+plt.hist(Pay_Rate,
+         color = 'green')
+plt.title('Pay Rate Histogram')
+plt.xlabel('Employee Rates of Pay')
+plt.ylabel('Number of people with this pay')
+plt.grid(True)
+plt.show()
+
+# Creating a boxplot to visually see the spread of the data. 
+plt.boxplot(Pay_Rate)
+plt.xlabel('Pay Data')
+plt.ylabel('Rates of Pay')
+plt.title('Rates of Pay Spread')
+plt.show()
